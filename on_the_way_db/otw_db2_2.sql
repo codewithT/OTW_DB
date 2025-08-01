@@ -1,8 +1,8 @@
--- MySQL dump 10.13  Distrib 8.0.34, for Win64 (x86_64)
+-- MySQL dump 10.13  Distrib 8.0.42, for Win64 (x86_64)
 --
--- Host: 127.0.0.1    Database: urban_db
+-- Host: 127.0.0.1    Database: otw_db
 -- ------------------------------------------------------
--- Server version	8.0.34
+-- Server version	8.0.42
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -18,7 +18,6 @@
 --
 -- Table structure for table `bookings`
 --
-use otw_db;
 
 DROP TABLE IF EXISTS `bookings`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
@@ -42,7 +41,7 @@ CREATE TABLE `bookings` (
   CONSTRAINT `bookings_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`),
   CONSTRAINT `bookings_ibfk_2` FOREIGN KEY (`provider_id`) REFERENCES `providers` (`id`),
   CONSTRAINT `bookings_ibfk_3` FOREIGN KEY (`subcategory_id`) REFERENCES `subcategories` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -51,6 +50,7 @@ CREATE TABLE `bookings` (
 
 LOCK TABLES `bookings` WRITE;
 /*!40000 ALTER TABLE `bookings` DISABLE KEYS */;
+INSERT INTO `bookings` VALUES (1,5,NULL,29,'2025-08-05 08:00:00','2-5 Thimmaraopeta, Khammam, Telangana - 507168, India',360,2360,'cancelled','refunded','2025-07-31 04:37:18');
 /*!40000 ALTER TABLE `bookings` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -72,7 +72,7 @@ CREATE TABLE `carts` (
   KEY `subcategory_id` (`subcategory_id`),
   CONSTRAINT `carts_ibfk_1` FOREIGN KEY (`customer_id`) REFERENCES `customers` (`id`) ON DELETE CASCADE,
   CONSTRAINT `carts_ibfk_2` FOREIGN KEY (`subcategory_id`) REFERENCES `subcategories` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -81,7 +81,6 @@ CREATE TABLE `carts` (
 
 LOCK TABLES `carts` WRITE;
 /*!40000 ALTER TABLE `carts` DISABLE KEYS */;
-INSERT INTO `carts` VALUES (17,23,62,1,'2025-07-22 10:46:17'),(18,23,65,1,'2025-07-22 10:46:17'),(19,23,66,1,'2025-07-22 10:46:17'),(24,22,61,2,'2025-07-23 09:37:46');
 /*!40000 ALTER TABLE `carts` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -114,7 +113,7 @@ CREATE TABLE `customer_addresses` (
   KEY `idx_customer_active` (`customer_id`,`is_active`),
   SPATIAL KEY `idx_coordinates` (`location`),
   CONSTRAINT `customer_addresses_ibfk_1` FOREIGN KEY (`customer_id`) REFERENCES `customers` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -123,7 +122,7 @@ CREATE TABLE `customer_addresses` (
 
 LOCK TABLES `customer_addresses` WRITE;
 /*!40000 ALTER TABLE `customer_addresses` DISABLE KEYS */;
-INSERT INTO `customer_addresses` VALUES (2,22,'My Address','500081','Hyderabad','Telangana','India',17.38500000,78.48670000,ST_GeomFromText('POINT(78.48670000 17.38500000)', 4326),'home',NULL,0,1,'2025-07-23 06:46:41','2025-07-23 06:46:41');
+INSERT INTO `customer_addresses` VALUES (1,5,'2-5 Thimmaraopeta','507168','Khammam','Telangana','India',0.00000000,0.00000000,_binary '\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0','home','Home',1,1,'2025-07-31 04:36:54','2025-07-31 04:36:54');
 /*!40000 ALTER TABLE `customer_addresses` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -154,7 +153,7 @@ CREATE TABLE `customers` (
 
 LOCK TABLES `customers` WRITE;
 /*!40000 ALTER TABLE `customers` DISABLE KEYS */;
-INSERT INTO `customers` VALUES (22,'washington ton dc , usa, America Continent','584332','Washington, DC','Florida','USA',NULL,NULL),(23,NULL,NULL,NULL,NULL,NULL,NULL,NULL);
+INSERT INTO `customers` VALUES (2,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(5,'2-5 Thimmaraopeta','507168','Khammam','Telangana','India',0.00000000,0.00000000);
 /*!40000 ALTER TABLE `customers` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -259,6 +258,39 @@ LOCK TABLES `payments` WRITE;
 UNLOCK TABLES;
 
 --
+-- Table structure for table `provider_addresses`
+--
+
+DROP TABLE IF EXISTS `provider_addresses`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `provider_addresses` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `provider_id` int DEFAULT NULL,
+  `address_type` enum('permanent','temporary','mailing') DEFAULT 'permanent',
+  `street_address` varchar(255) DEFAULT NULL,
+  `city` varchar(100) DEFAULT NULL,
+  `state` varchar(100) DEFAULT NULL,
+  `zip_code` varchar(20) DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`),
+  KEY `provider_id` (`provider_id`),
+  CONSTRAINT `provider_addresses_ibfk_1` FOREIGN KEY (`provider_id`) REFERENCES `providers` (`id`) ON DELETE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `provider_addresses`
+--
+
+LOCK TABLES `provider_addresses` WRITE;
+/*!40000 ALTER TABLE `provider_addresses` DISABLE KEYS */;
+INSERT INTO `provider_addresses` VALUES (1,2,'permanent','2-5 Thimmaraopeta','Khammam','Telangana','507168','2025-08-01 04:04:00','2025-08-01 04:04:00');
+/*!40000 ALTER TABLE `provider_addresses` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `provider_banking_details`
 --
 
@@ -359,7 +391,7 @@ CREATE TABLE `provider_data` (
   KEY `email_2` (`email`),
   KEY `phone_number_2` (`phone_number`),
   KEY `is_active` (`is_active`,`is_verified`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -368,7 +400,6 @@ CREATE TABLE `provider_data` (
 
 LOCK TABLES `provider_data` WRITE;
 /*!40000 ALTER TABLE `provider_data` DISABLE KEYS */;
-INSERT INTO `provider_data` VALUES (1,101,'Ramesh Kumar','ramesh.k@example.com','9876543210','15+ years of experience in residential and commercial electrical work. CET-certified.','https://example.com/images/ramesh.jpg','123, Koramangala, Bangalore','ramesh.k.alt@example.com','9000000001','Sunita Kumar','Spouse','9012345671',15,4.80,1,1,'2025-07-28 05:00:00',25,12.93450000,77.62440000,NULL,NULL,NULL,'[{\"name\": \"Certified Electrical Technician\", \"institution\": \"ITI Bangalore\"}, {\"name\": \"Advanced Safety Training\", \"institution\": \"Safety First Institute\"}]','[{\"url\": \"...\", \"type\": \"identity_proof\", \"status\": \"approved\"}, {\"url\": \"...\", \"type\": \"trade_certificate\", \"status\": \"approved\"}]','Ramesh Kumar','11223344556','HDFC0000123','HDFC Bank','savings','verified',1,1,0,5,'public','on_job','en-US','INR','km','Google Search',NULL,'individual',1,1,'Platinum','[{\"name\": \"Fan Installation\", \"rate\": 800, \"pricing_model\": \"fixed\", \"subcategory_id\": 10}, {\"name\": \"Wiring Inspection\", \"rate\": 600, \"pricing_model\": \"per_hour\", \"subcategory_id\": 11}]','2025-07-28 05:52:26','2025-07-28 05:52:26'),(2,102,'Priya Singh','priya.s@example.com','9876543211','Professional driver with a clean record and 5 years experience in city and highway driving. Customer-focused and punctual.','https://example.com/images/priya.jpg','45, Indiranagar, Bangalore','priya.s.alt@example.com','9000000002','Amit Singh','Sibling','9012345672',5,4.90,1,1,'2025-07-28 05:25:00',30,12.97160000,77.64110000,'DL1420200012345','2030-05-20','[{\"make\": \"Toyota\", \"year\": 2022, \"model\": \"Innova Crysta\", \"vehicle_type\": \"suv\", \"registration_number\": \"KA01MF1234\"}]','[]','[{\"url\": \"...\", \"type\": \"drivers_license\", \"status\": \"approved\"}, {\"url\": \"...\", \"type\": \"vehicle_registration\", \"status\": \"approved\"}]','Priya Singh','22334455667','ICIC0000102','ICICI Bank','savings','verified',1,1,1,10,'public','always_on','en-US','INR','km','Friend Referral',105,'individual',1,0,'Gold','[{\"name\": \"City Ride\", \"rate\": 450, \"pricing_model\": \"per_hour\", \"subcategory_id\": 1}, {\"name\": \"Airport Drop\", \"rate\": 1200, \"pricing_model\": \"fixed\", \"subcategory_id\": 2}]','2025-07-28 05:52:26','2025-07-28 05:52:26'),(3,103,'Glow Home Cleaning','contact@glowhome.com','9876543212','We are a team of trained professionals providing top-notch home cleaning services. We use eco-friendly products.','https://example.com/images/glowhome.jpg','78, Jayanagar, Bangalore','admin@glowhome.com','9000000003','Vikram Desai','Business Partner','9012345673',4,4.70,1,1,'2025-07-28 03:30:00',15,12.92620000,77.58230000,NULL,NULL,NULL,'[]','[{\"url\": \"...\", \"type\": \"address_proof\", \"status\": \"approved\"}]','Glow Home Cleaning Pvt Ltd','33445566778','AXIS0000143','Axis Bank','current','verified',1,1,0,99,'public','on_job','en-US','INR','km','Facebook Ad',NULL,'small_business',1,1,'Gold','[{\"name\": \"Deep Home Cleaning\", \"rate\": 4500, \"pricing_model\": \"fixed\", \"subcategory_id\": 20}, {\"name\": \"Kitchen Cleaning\", \"rate\": 1500, \"pricing_model\": \"fixed\", \"subcategory_id\": 21}]','2025-07-28 05:52:26','2025-07-28 05:52:26'),(4,104,'Arun Patel','arun.p@example.com','9876543213','Certified plumber specializing in leak detection and fixture installation. Available for emergency services.','https://example.com/images/arun.jpg','99, HSR Layout, Bangalore',NULL,NULL,'Kavita Patel','Parent','9012345674',2,4.50,1,1,'2025-07-28 04:45:00',10,12.91210000,77.64460000,NULL,NULL,NULL,'[{\"name\": \"Plumbing Certification\", \"institution\": \"Skill India\"}]','[{\"url\": \"...\", \"type\": \"identity_proof\", \"status\": \"approved\"}]','Arun Patel','44556677889','SBIN0000876','State Bank of India','savings','verified',1,1,0,8,'public','on_job','en-US','INR','km','Offline Event',NULL,'individual',0,1,'Silver','[{\"name\": \"Leaky Pipe Repair\", \"rate\": 400, \"pricing_model\": \"per_hour\", \"subcategory_id\": 15}, {\"name\": \"Tap Installation\", \"rate\": 500, \"pricing_model\": \"fixed\", \"subcategory_id\": 16}]','2025-07-28 05:52:26','2025-07-28 05:52:26'),(5,105,'Sanjay Yadav','sanjay.y@example.com','9876543214','Experienced and reliable personal driver for hire. Familiar with all city routes and fluent in English and Hindi.','https://example.com/images/sanjay.jpg','56, Marathahalli, Bangalore','sanjay.y.alt@example.com',NULL,'Geeta Yadav','Spouse','9012345675',8,4.90,1,1,'2025-07-28 05:10:00',20,12.95690000,77.70110000,'DL1820150054321','2028-11-01',NULL,'[]','[{\"url\": \"...\", \"type\": \"drivers_license\", \"status\": \"approved\"}]','Sanjay Yadav','55667788990','HDFC0000123','HDFC Bank','savings','verified',1,1,0,3,'public','off','en-US','INR','km','Friend Referral',102,'individual',0,1,'Silver','[{\"name\": \"Driver for Hire (Per Day)\", \"rate\": 1500, \"pricing_model\": \"per_day\", \"subcategory_id\": 3}]','2025-07-28 05:52:26','2025-07-28 05:52:26'),(6,106,'Rajesh Gupta','rajesh.g@example.com','9876543215','Licensed pest control operator with expertise in handling termites, rodents, and cockroaches. Safe and effective solutions.','https://example.com/images/rajesh.jpg','21, Whitefield, Bangalore',NULL,NULL,'Meena Gupta','Spouse','9012345676',7,4.80,1,1,'2025-07-28 05:30:00',25,12.96980000,77.74990000,NULL,NULL,NULL,'[{\"name\": \"Pest Control License\", \"institution\": \"State Health Dept.\"}]','[{\"url\": \"...\", \"type\": \"trade_certificate\", \"status\": \"approved\"}]','Rajesh Gupta','66778899001','ICIC0000102','ICICI Bank','savings','verified',1,1,0,4,'public','on_job','en-US','INR','km','Google Search',NULL,'individual',1,1,'Gold','[{\"name\": \"Cockroach Control\", \"rate\": 1800, \"pricing_model\": \"fixed\", \"subcategory_id\": 30}]','2025-07-28 05:52:26','2025-07-28 05:52:26'),(7,107,'Anita Devi','anita.d@example.com','9876543216','Reliable and thorough housekeeper available for daily or weekly cleaning, dusting, and mopping.','https://example.com/images/anita.jpg','33, Electronic City, Bangalore',NULL,'9000000007','Ravi Shankar','Brother','9012345677',3,4.60,1,0,'2025-07-27 12:30:00',8,12.84520000,77.66020000,NULL,NULL,NULL,'[]','[{\"url\": \"...\", \"type\": \"identity_proof\", \"status\": \"approved\"}]','Anita Devi','77889900112','SBIN0000876','State Bank of India','savings','verified',1,0,0,2,'platform_only','on_job','hi-IN','INR','km','Word of Mouth',NULL,'individual',0,1,'Silver','[{\"name\": \"General Housekeeping\", \"rate\": 250, \"pricing_model\": \"per_hour\", \"subcategory_id\": 22}]','2025-07-28 05:52:26','2025-07-28 05:52:26'),(8,108,'CoolTech Services','support@cooltech.com','9876543217','Your one-stop shop for AC installation, repair, and regular maintenance. Authorised dealers for major brands.','https://example.com/images/cooltech.jpg','88, Malleswaram, Bangalore','accounts@cooltech.com','9000000008','Suresh Reddy','Manager','9012345678',10,4.90,1,1,'2025-07-28 04:00:00',30,13.00190000,77.56380000,NULL,NULL,NULL,'[{\"name\": \"HVAC Certification\", \"institution\": \"Tech Skills Academy\"}]','[{\"url\": \"...\", \"type\": \"address_proof\", \"status\": \"approved\"}]','CoolTech Services LLP','88990011223','AXIS0000143','Axis Bank','current','verified',1,1,0,99,'public','on_job','en-US','INR','km','Facebook Ad',NULL,'small_business',1,1,'Platinum','[{\"name\": \"AC Gas Refill\", \"rate\": 2500, \"pricing_model\": \"fixed\", \"subcategory_id\": 40}, {\"name\": \"AC Installation\", \"rate\": 1500, \"pricing_model\": \"fixed\", \"subcategory_id\": 41}]','2025-07-28 05:52:26','2025-07-28 05:52:26'),(9,109,'Irfan Khan','irfan.k@example.com','9876543218','Skilled carpenter for furniture repair, assembly, and custom woodwork. Precision and quality guaranteed.','https://example.com/images/irfan.jpg','12, RT Nagar, Bangalore',NULL,NULL,'Fatima Khan','Spouse','9012345679',12,4.70,1,1,'2025-07-28 04:35:00',15,13.02880000,77.59270000,NULL,NULL,NULL,'[{\"name\": \"Advanced Carpentry\", \"institution\": \"Urban Skills Center\"}]','[{\"url\": \"...\", \"type\": \"identity_proof\", \"status\": \"approved\"}]','Irfan Khan','99001122334','HDFC0000123','HDFC Bank','savings','verified',1,1,0,3,'public','on_job','en-US','INR','km','Google Search',NULL,'individual',0,1,'Gold','[{\"name\": \"Furniture Assembly\", \"rate\": 700, \"pricing_model\": \"per_item\", \"subcategory_id\": 50}]','2025-07-28 05:52:26','2025-07-28 05:52:26'),(10,110,'Kiran More','kiran.m@example.com','9876543219','Quick and safe bike taxi rides to beat the city traffic. Available for short-distance commutes.','https://example.com/images/kiran.jpg','7, BTM Layout, Bangalore','kiran.m.alt@example.com',NULL,'Sunil More','Brother','9012345680',3,4.60,1,0,'2025-06-15 11:30:00',10,12.91660000,77.61010000,'DL2020220065432','2032-01-10','[{\"make\": \"Bajaj\", \"year\": 2023, \"model\": \"Pulsar 150\", \"vehicle_type\": \"bike\", \"registration_number\": \"KA05XY5678\"}]','[]','[{\"url\": \"...\", \"type\": \"drivers_license\", \"status\": \"approved\"}]','Kiran More','10203040506','ICIC0000102','ICICI Bank','savings','verified',0,1,1,15,'public','always_on','mr-IN','INR','km','Friend Referral',102,'individual',0,0,'Silver','[{\"name\": \"Bike Ride\", \"rate\": 150, \"pricing_model\": \"per_hour\", \"subcategory_id\": 4}]','2025-07-28 05:52:26','2025-07-28 05:52:26');
 /*!40000 ALTER TABLE `provider_data` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -476,7 +507,7 @@ CREATE TABLE `provider_services` (
   KEY `subcategory_id` (`subcategory_id`),
   CONSTRAINT `provider_services_ibfk_1` FOREIGN KEY (`provider_id`) REFERENCES `providers` (`id`) ON DELETE CASCADE,
   CONSTRAINT `provider_services_ibfk_2` FOREIGN KEY (`subcategory_id`) REFERENCES `subcategories` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -485,7 +516,7 @@ CREATE TABLE `provider_services` (
 
 LOCK TABLES `provider_services` WRITE;
 /*!40000 ALTER TABLE `provider_services` DISABLE KEYS */;
-INSERT INTO `provider_services` VALUES (1,7,31),(2,7,65),(5,8,62),(4,8,65),(3,8,67),(7,8,73),(8,8,74),(6,8,75),(10,9,62),(9,9,65),(12,9,73),(11,9,75);
+INSERT INTO `provider_services` VALUES (1,1,34),(2,2,67);
 /*!40000 ALTER TABLE `provider_services` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -518,6 +549,8 @@ CREATE TABLE `provider_settings` (
   `time_format` enum('12h','24h') NOT NULL DEFAULT '24h',
   `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `working_hours_start` time DEFAULT NULL,
+  `working_hours_end` time DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `provider_id` (`provider_id`),
   CONSTRAINT `provider_settings_ibfk_1` FOREIGN KEY (`provider_id`) REFERENCES `providers` (`id`) ON DELETE CASCADE
@@ -554,7 +587,6 @@ CREATE TABLE `providers` (
   `location_lng` decimal(11,8) DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  `permanent_address` varchar(255) DEFAULT NULL,
   `alternate_email` varchar(100) DEFAULT NULL COMMENT 'Secondary email for account recovery',
   `alternate_phone_number` varchar(15) DEFAULT NULL COMMENT 'Secondary phone for account recovery',
   `emergency_contact_name` varchar(100) DEFAULT NULL COMMENT 'Full name of the emergency contact',
@@ -563,7 +595,7 @@ CREATE TABLE `providers` (
   PRIMARY KEY (`id`),
   KEY `user_id` (`user_id`),
   CONSTRAINT `providers_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -572,7 +604,7 @@ CREATE TABLE `providers` (
 
 LOCK TABLES `providers` WRITE;
 /*!40000 ALTER TABLE `providers` DISABLE KEYS */;
-INSERT INTO `providers` VALUES (1,101,5,4.75,'Experienced electrician with 5+ years in residential wiring and repairs.',1,1,'2025-07-25 08:52:10',15,19.07609000,72.87742600,'2022-03-01 04:45:00','2025-07-25 08:52:10','402, Gopal Apartments, Dadar West, Mumbai, MH',NULL,NULL,NULL,NULL,NULL),(2,102,2,4.20,'Freelance makeup artist specializing in weddings and parties.',1,1,'2025-07-26 03:00:55',10,28.61393900,77.20902300,'2023-01-18 04:00:00','2025-07-26 03:00:55','A-45, Green Park, New Delhi, DL',NULL,NULL,NULL,NULL,NULL),(3,103,10,4.95,'Plumber with over a decade of experience in pipe fitting and leak repairs.',1,0,'2025-06-30 11:15:20',25,13.08268000,80.27071800,'2021-08-22 09:40:00','2025-06-30 11:15:20','17B, Anna Nagar, Chennai, TN',NULL,NULL,NULL,NULL,NULL),(4,104,3,3.85,'Young and energetic personal trainer with focus on strength and mobility.',0,1,'2025-07-26 03:40:00',8,12.97159900,77.59456600,'2024-02-12 05:30:00','2025-07-26 03:40:00','201, Koramangala 4th Block, Bangalore, KA',NULL,NULL,NULL,NULL,NULL),(5,105,7,4.60,'Gardener offering organic landscaping and plant care services.',1,1,'2025-07-25 14:15:45',20,22.57264600,88.36389500,'2020-11-10 02:55:00','2025-07-25 14:15:45','55A, Salt Lake Sector 3, Kolkata, WB',NULL,NULL,NULL,NULL,NULL),(6,106,1,0.00,'dsf',1,1,NULL,10,17.75042560,83.29625600,'2025-07-30 04:46:47','2025-07-30 05:18:37',NULL,NULL,NULL,NULL,NULL,NULL),(7,107,1,0.00,'4562',0,1,'2025-07-30 05:26:28',10,17.75042560,83.29625600,'2025-07-30 04:56:59','2025-07-30 05:26:28',NULL,NULL,NULL,NULL,NULL,NULL),(8,110,2,0.00,'87451',0,1,NULL,10,17.75042560,83.29625600,'2025-07-30 05:37:40','2025-07-30 05:37:40','miami, usa ','','','Messi','friend','7894561230'),(9,111,2,0.00,'gshfjdkl',0,0,'2025-07-30 05:45:29',20,17.74152190,83.22585450,'2025-07-30 05:41:38','2025-07-30 07:18:09','portugal ','ronaldo@gmail.com','7418529305','ronaldo','friend','7418529630');
+INSERT INTO `providers` VALUES (1,4,1,0.00,'Messi Koduku ni raa Saaleeeee',0,1,'2025-07-30 09:08:51',10,17.23170000,80.18260000,'2025-07-30 07:45:19','2025-07-30 09:08:51','messikoduku@gmail.com','6969696969','worker pilagadu','child','9876543210'),(2,7,2,0.00,'hi there, best bathroom cleaner here',0,1,'2025-08-01 04:28:37',10,17.24653510,80.15003260,'2025-08-01 04:04:00','2025-08-01 04:28:37','suhail.mscellpoint@gmail.com','09666339939','Suhail','friend','9666339939');
 /*!40000 ALTER TABLE `providers` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -698,7 +730,7 @@ CREATE TABLE `user_roles` (
   KEY `role_id` (`role_id`),
   CONSTRAINT `user_roles_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`),
   CONSTRAINT `user_roles_ibfk_2` FOREIGN KEY (`role_id`) REFERENCES `roles` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -707,7 +739,7 @@ CREATE TABLE `user_roles` (
 
 LOCK TABLES `user_roles` WRITE;
 /*!40000 ALTER TABLE `user_roles` DISABLE KEYS */;
-INSERT INTO `user_roles` VALUES (2,7,1),(3,8,4),(5,11,3),(6,12,3),(7,13,3),(9,18,3),(10,19,3),(11,20,2),(12,21,2),(13,22,1),(14,23,1),(15,106,2),(16,107,2),(19,110,2),(20,111,2);
+INSERT INTO `user_roles` VALUES (2,2,4),(3,3,3),(4,4,2),(5,5,1),(6,6,3),(7,7,2);
 /*!40000 ALTER TABLE `user_roles` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -726,9 +758,10 @@ CREATE TABLE `users` (
   `is_active` tinyint(1) DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   `phone_number` varchar(10) DEFAULT NULL,
+  `gender` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `email` (`email`)
-) ENGINE=InnoDB AUTO_INCREMENT=112 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -737,7 +770,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (7,'tulasi ram','tulasi12115045@gmail.com','$2b$10$/mMUziTGSwGY8uERTzwa7eMR5iddTALTmohTjsSdzrjw78qOgQrZm',1,'2025-07-18 11:45:04','9874561230'),(8,'supra admin','superadmin@urbango.ca','$2b$10$K/hwKUBqWBw4iSTO8Uq/Mui8hzCwQlp5BJNlUyblC2KsegS87dmxS',1,'2025-07-18 13:07:10','7854963210'),(11,'Ronaldo','ronaldo7@otw.com','Superadmin@123',1,'2025-07-21 05:17:31','1236547890'),(12,'Ronaldo','ronaldoCR7@otw.com','Superadmin@123',1,'2025-07-21 05:20:31','7777777777'),(13,'Hello','Hello@gmail.com','User@123',0,'2025-07-21 05:30:16','7894564512'),(18,'neymar','neymar@gmail.com','User@123',1,'2025-07-21 05:35:47','7894561230'),(19,'messi','messi@gmail.com','$2b$10$3bY3s4A8.NxPpiCM9d.k.uRBUED2CR/CKojn3JeIBNMV3J/v7sT/G',1,'2025-07-21 05:54:59','1010101010'),(20,'messi leo','messi123@gmail.com','$2b$10$H4CyFs3EPJG0FU1IwAWrZewvBYead9ar9QD.SqsMLCthv2atzcB16',1,'2025-07-21 10:24:24','7894562310'),(21,'ronaldo 7','ronaldo12@gmail.com','$2b$10$7GpP3x0amZNJEmxwtGCstOJJLicp09dtOnzQ4OuWSj4KiJITdYdeK',1,'2025-07-22 08:46:28','4587466545'),(22,'Neymar da silva santos','neymarDa@gmail.com','$2b$10$CWS2xiW0XhHW/lm.RNW28ugO3VNXpGhhBfsBQ97T0ECb3YX4D13au',1,'2025-07-22 09:54:05','7894565223'),(23,'Ronda Alado','ronaldo123@gmail.com','$2b$10$y3jTMhdkZAzG.8W08aW9EeR6myuV09PHHZBYzoTyvtF2Kw3pGql/2',1,'2025-07-22 10:46:17','5452215221'),(101,'Rajesh Kumar','rajesh.kumar@example.com','$2y$10$abcxyz1234567890encrypted1',1,'2021-02-10 03:45:00','9876543210'),(102,'Priya Mehta','priya.mehta@example.com','$2y$10$abcxyz1234567890encrypted2',1,'2022-06-18 05:15:00','9812345678'),(103,'Suresh Nair','suresh.nair@example.com','$2y$10$abcxyz1234567890encrypted3',0,'2020-12-05 03:00:00','9765432109'),(104,'Anjali Verma','anjali.verma@example.com','$2y$10$abcxyz1234567890encrypted4',1,'2023-03-22 08:30:00','9888777666'),(105,'Arvind Sen','arvind.sen@example.com','$2y$10$abcxyz1234567890encrypted5',1,'2019-09-30 02:20:00','9900112233'),(106,'Messi lionel','messiWorker2@gmail.com','$2b$10$.B4t3YiF3O7KWGbDhsGtIeECzGxUiazshjYTJejmUWVPyiW83N3NG',1,'2025-07-30 04:46:47','7894561230'),(107,'Messi  lionel','messiWorker3@gmail.com','$2b$10$c7W4FIsMwReaC0up1O.tjepgi7GkLwtGLJPP3rJdvqGPd8.dnzSNW',1,'2025-07-30 04:56:59','7418529630'),(110,'worker 1','worker1@gmail.com','$2b$10$6i.jIvgKDtcR994XU07o8OS1sXubVWgl2WyIfbnJzzEXtVUo7lqD6',1,'2025-07-30 05:37:40','7418529630'),(111,'Tulasi ram','worker2@gmail.com','$2b$10$zwy/L.QvztUq6FmLvvyVvOSFYmfTYwFPA3CDKEaiFU.ZboUnrxf/O',1,'2025-07-30 05:41:38','7410852963');
+INSERT INTO `users` VALUES (2,'super admin','superadmin@otw.com','$2b$10$Y/hsbzGdXiC27mLi3mjE1.R02KZ8zy1SFhsgDFJsr.ODD/zmujxZS',1,'2025-07-30 07:41:08',NULL,'prefer_not_to_say'),(3,'admin','admin@otw.com','$2b$10$YNBUMXyo2RWvlUE3qeA93eu/JGPpko0cBGZIL9B7dZ0RLztKuZNNa',1,'2025-07-30 07:43:57','7894561230','female'),(4,'Messi Gadi  Worker','messikoduku@otw.com','$2b$10$wgK1UNdeDiChC98GTFEu6.kPuldUPzoEw0N3LR/HHbPl6.d90cUii',1,'2025-07-30 07:45:19','7894561230',NULL),(5,'suhail mahamad','suhail@gmail.com','$2b$10$NMHFools5i5H51nnaYtpiuxEOgv5p/jroe1KP6NqH8fFQrBYjOewy',1,'2025-07-30 10:19:11','9666339939','male'),(6,'admin with gender','adminwithgender@otw.com','$2b$10$NgCjRzbG/fVugJmmfkKD4Obxet967ce6151uAn1x4AiO5Mx7rCTVa',1,'2025-07-31 09:17:08','1234567890','male'),(7,'worker test','worker@otw.com','$2b$10$NKLoK3bz4E3haEWN3f7Z5.DRXva/vomRnXtmJ3CCRn4uAc./YicM.',1,'2025-08-01 04:04:00',NULL,NULL);
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -788,4 +821,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2025-07-30 12:51:58
+-- Dump completed on 2025-08-01 10:18:40
