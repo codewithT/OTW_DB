@@ -1,10 +1,6 @@
 -- MySQL dump 10.13  Distrib 8.0.34, for Win64 (x86_64)
 --
-<<<<<<< HEAD
--- Host: 127.0.0.1    Database: omw_db
-=======
 -- Host: 127.0.0.1    Database: otw_db
->>>>>>> 873386f73b51fb24a0d8e39a3d78d4ffea533dac
 -- ------------------------------------------------------
 -- Server version	8.0.34
 
@@ -22,11 +18,7 @@
 --
 -- Table structure for table `booking_requests`
 --
-<<<<<<< HEAD
 use omw_db;
-=======
-
->>>>>>> 873386f73b51fb24a0d8e39a3d78d4ffea533dac
 DROP TABLE IF EXISTS `booking_requests`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
@@ -42,7 +34,7 @@ CREATE TABLE `booking_requests` (
   KEY `provider_id` (`provider_id`),
   CONSTRAINT `booking_requests_ibfk_1` FOREIGN KEY (`booking_id`) REFERENCES `bookings` (`id`) ON DELETE CASCADE,
   CONSTRAINT `booking_requests_ibfk_2` FOREIGN KEY (`provider_id`) REFERENCES `providers` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=31 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=53 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -51,7 +43,7 @@ CREATE TABLE `booking_requests` (
 
 LOCK TABLES `booking_requests` WRITE;
 /*!40000 ALTER TABLE `booking_requests` DISABLE KEYS */;
-INSERT INTO `booking_requests` VALUES (25,50,1,'pending','2025-08-20 05:31:22',NULL),(26,50,2,'pending','2025-08-20 05:31:22',NULL),(27,50,3,'pending','2025-08-20 05:31:22',NULL),(28,51,1,'rejected','2025-08-20 05:41:05','2025-08-20 11:58:53'),(29,51,2,'accepted','2025-08-20 05:41:05','2025-08-20 11:58:53'),(30,51,3,'rejected','2025-08-20 05:41:05','2025-08-20 11:58:53');
+INSERT INTO `booking_requests` VALUES (25,50,1,'pending','2025-08-20 05:31:22',NULL),(26,50,2,'pending','2025-08-20 05:31:22',NULL),(27,50,3,'pending','2025-08-20 05:31:22',NULL),(28,51,1,'rejected','2025-08-20 05:41:05','2025-08-20 11:58:53'),(29,51,2,'accepted','2025-08-20 05:41:05','2025-08-20 11:58:53'),(30,51,3,'rejected','2025-08-20 05:41:05','2025-08-20 11:58:53'),(31,52,2,'pending','2025-08-21 03:36:25',NULL),(32,53,2,'pending','2025-08-21 10:03:31',NULL),(33,53,3,'pending','2025-08-21 10:03:31',NULL),(34,54,2,'accepted','2025-08-21 04:36:06','2025-08-26 06:16:48'),(35,55,2,'accepted','2025-08-21 04:59:07','2025-08-26 05:47:37'),(36,56,2,'accepted','2025-08-21 05:02:57','2025-08-21 10:42:15'),(37,57,1,'rejected','2025-08-26 01:33:17','2025-08-26 07:03:31'),(38,57,2,'accepted','2025-08-26 01:33:17','2025-08-26 07:03:31'),(39,57,3,'rejected','2025-08-26 01:33:17','2025-08-26 07:03:31'),(40,58,2,'rejected','2025-08-26 01:38:01','2025-08-26 08:07:13'),(41,59,2,'rejected','2025-08-26 02:25:31','2025-08-26 08:07:49'),(42,60,2,'accepted','2025-09-10 04:59:08','2025-09-14 08:45:06'),(43,61,2,'accepted','2025-09-10 05:14:01','2025-09-10 10:48:23'),(44,62,2,'accepted','2025-09-10 11:14:06','2025-09-10 11:19:05'),(45,62,3,'rejected','2025-09-10 11:14:06','2025-09-10 11:19:05'),(46,63,2,'rejected','2025-09-10 11:37:26','2025-09-14 08:45:09'),(47,63,3,'pending','2025-09-10 11:37:26','2025-09-14 08:44:59'),(48,64,5,'pending','2025-09-12 03:38:32',NULL),(49,65,5,'pending','2025-09-14 03:17:08',NULL),(50,66,2,'accepted','2025-09-14 03:19:27','2025-09-14 09:10:57'),(51,67,2,'accepted','2025-09-14 03:30:01','2025-09-14 09:10:55'),(52,69,2,'pending','2025-09-14 03:43:32',NULL);
 /*!40000 ALTER TABLE `booking_requests` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -85,7 +77,7 @@ CREATE TABLE `bookings` (
   CONSTRAINT `bookings_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`),
   CONSTRAINT `bookings_ibfk_2` FOREIGN KEY (`provider_id`) REFERENCES `providers` (`id`),
   CONSTRAINT `bookings_ibfk_3` FOREIGN KEY (`subcategory_id`) REFERENCES `subcategories` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=52 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=70 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -94,7 +86,7 @@ CREATE TABLE `bookings` (
 
 LOCK TABLES `bookings` WRITE;
 /*!40000 ALTER TABLE `bookings` DISABLE KEYS */;
-INSERT INTO `bookings` VALUES (1,5,NULL,'service',29,'2025-08-05 08:00:00',360,NULL,NULL,2360,'cancelled','refunded','2025-07-31 04:37:18',NULL,NULL),(2,5,NULL,'ride',NULL,'2025-08-01 19:44:00',NULL,1500,NULL,NULL,'pending','pending','2025-08-01 13:09:19',3,'per_hour'),(3,5,NULL,'ride',NULL,'2025-08-02 09:33:00',NULL,2500,NULL,NULL,'cancelled','refunded','2025-08-01 13:11:33',5,'per_hour'),(4,5,NULL,'ride',NULL,'2025-08-02 09:00:00',NULL,2500,NULL,NULL,'cancelled','refunded','2025-08-01 13:22:08',5,'per_hour'),(5,5,NULL,'ride',NULL,'2025-08-02 09:00:00',NULL,2500,NULL,NULL,'cancelled','refunded','2025-08-01 13:51:21',5,'per_hour'),(6,5,2,'ride',NULL,'2025-08-02 09:00:00',NULL,3000,NULL,NULL,'assigned','pending','2025-08-01 14:20:38',6,'per_hour'),(7,5,NULL,'service',65,'2025-08-02 10:00:00',90,NULL,NULL,590,'cancelled','refunded','2025-08-01 15:38:23',NULL,NULL),(8,5,NULL,'ride',NULL,'2025-08-02 05:00:00',NULL,6000,NULL,NULL,'cancelled','refunded','2025-08-01 15:40:55',12,'per_hour'),(9,5,NULL,'ride',NULL,'2025-08-02 10:00:00',NULL,30000,NULL,NULL,'cancelled','refunded','2025-08-01 15:44:02',60,'per_hour'),(10,5,NULL,'ride',NULL,'2025-08-02 01:20:00',NULL,5000,NULL,NULL,'cancelled','refunded','2025-08-01 15:48:48',10,'per_hour'),(11,5,4,'ride',NULL,'2025-08-02 22:22:00',NULL,5000,NULL,NULL,'assigned','pending','2025-08-01 15:50:11',10,'per_hour'),(12,5,NULL,'ride',NULL,'2025-08-03 09:58:00',NULL,6000,NULL,NULL,'cancelled','refunded','2025-08-02 04:28:45',12,'per_hour'),(13,5,2,'ride',NULL,'2025-08-04 10:10:00',NULL,5000,NULL,NULL,'assigned','pending','2025-08-02 04:41:07',10,'per_hour'),(14,5,NULL,'ride',NULL,'2025-08-03 10:11:00',NULL,5000,NULL,NULL,'pending','pending','2025-08-02 04:41:46',10,'per_hour'),(15,5,NULL,'ride',NULL,'2025-08-02 10:12:00',NULL,5000,NULL,NULL,'pending','pending','2025-08-02 04:42:34',10,'per_hour'),(16,5,NULL,'ride',NULL,'2025-08-02 10:13:00',NULL,3000,NULL,NULL,'pending','pending','2025-08-02 04:43:19',6,'per_hour'),(17,5,2,'ride',NULL,'2025-08-02 10:14:00',NULL,2500,NULL,NULL,'assigned','pending','2025-08-02 04:44:18',5,'per_hour'),(18,5,NULL,'service',32,'2025-08-03 10:00:00',1440,NULL,NULL,9440,'pending','pending','2025-08-02 05:02:25',NULL,NULL),(19,5,NULL,'service',32,'2025-08-03 11:00:00',720,NULL,NULL,4720,'pending','pending','2025-08-02 05:09:04',NULL,NULL),(20,5,5,'service',32,'2025-08-07 16:00:00',720,NULL,NULL,4720,'assigned','pending','2025-08-02 05:10:23',NULL,NULL),(21,5,NULL,'service',64,'2025-08-08 13:00:00',450,NULL,NULL,2950,'pending','pending','2025-08-02 05:10:48',NULL,NULL),(22,5,NULL,'service',32,'2025-08-08 12:00:00',720,NULL,NULL,4720,'pending','pending','2025-08-02 06:03:33',NULL,NULL),(23,5,NULL,'service',32,'2025-08-05 13:00:00',720,NULL,NULL,4720,'pending','pending','2025-08-02 06:04:09',NULL,NULL),(24,5,5,'service',33,'2025-08-03 11:00:00',1080,NULL,NULL,7080,'assigned','pending','2025-08-02 12:47:02',NULL,NULL),(25,5,2,'ride',NULL,'2025-08-03 21:23:00',NULL,2000,NULL,NULL,'assigned','pending','2025-08-02 12:50:48',4,'per_hour'),(26,5,NULL,'service',30,'2025-08-03 10:00:00',540,NULL,NULL,3540,'pending','pending','2025-08-02 13:10:37',NULL,NULL),(27,5,NULL,'service',32,'2025-08-03 10:00:00',720,NULL,NULL,4720,'pending','pending','2025-08-02 13:10:37',NULL,NULL),(28,5,NULL,'service',33,'2025-08-03 10:00:00',1080,NULL,NULL,7080,'pending','pending','2025-08-02 13:10:37',NULL,NULL),(29,5,6,'service',30,'2025-08-03 10:00:00',540,NULL,NULL,3540,'assigned','pending','2025-08-02 13:25:20',NULL,NULL),(30,5,2,'ride',NULL,'2025-08-03 20:04:00',NULL,2500,NULL,NULL,'assigned','pending','2025-08-02 13:36:58',5,'per_hour'),(31,5,NULL,'service',59,'2025-08-13 17:00:00',432,NULL,NULL,2832,'pending','pending','2025-08-13 08:41:16',NULL,NULL),(32,5,NULL,'service',29,'2025-08-15 18:00:00',360,NULL,NULL,2360,'pending','pending','2025-08-13 08:42:47',NULL,NULL),(33,5,NULL,'service',34,'2025-08-15 18:00:00',1440,NULL,NULL,9440,'pending','pending','2025-08-13 08:42:47',NULL,NULL),(34,5,NULL,'service',66,'2025-08-15 18:00:00',630,NULL,NULL,4130,'pending','pending','2025-08-13 08:42:47',NULL,NULL),(35,5,2,'service',67,'2025-08-19 18:00:00',1800,NULL,NULL,11800,'assigned','pending','2025-08-13 08:44:00',NULL,NULL),(36,5,2,'service',67,'2025-08-14 00:30:00',1800,NULL,NULL,11800,'assigned','pending','2025-08-13 09:05:37',NULL,NULL),(37,5,NULL,'service',67,'2025-08-14 00:30:00',1800,NULL,NULL,11800,'pending','pending','2025-08-13 03:40:21',NULL,NULL),(38,5,NULL,'service',67,'2025-08-13 19:00:00',1800,NULL,NULL,11800,'pending','pending','2025-08-13 03:52:35',NULL,NULL),(39,5,NULL,'service',67,'2025-08-13 19:00:00',1800,NULL,NULL,11800,'pending','pending','2025-08-13 03:55:15',NULL,NULL),(40,5,NULL,'service',67,'2025-08-13 19:00:00',1800,NULL,NULL,11800,'pending','pending','2025-08-13 04:21:26',NULL,NULL),(41,5,NULL,'service',67,'2025-08-13 19:00:00',1800,NULL,NULL,11800,'pending','pending','2025-08-13 04:24:58',NULL,NULL),(42,5,NULL,'service',67,'2025-08-13 19:00:00',1800,NULL,NULL,11800,'pending','pending','2025-08-13 04:26:26',NULL,NULL),(43,5,NULL,'service',67,'2025-08-14 19:00:00',1800,NULL,NULL,11800,'pending','pending','2025-08-13 04:30:46',NULL,NULL),(44,5,NULL,'service',67,'2025-08-13 13:30:00',1800,NULL,NULL,11800,'pending','pending','2025-08-13 04:33:01',NULL,NULL),(45,5,NULL,'service',67,'2025-08-13 13:30:00',1800,NULL,NULL,11800,'pending','pending','2025-08-13 04:43:48',NULL,NULL),(46,12,NULL,'service',59,'2025-08-13 13:30:00',216,NULL,NULL,1416,'pending','pending','2025-08-13 05:20:09',NULL,NULL),(47,5,NULL,'service',67,'2025-08-13 13:30:00',1800,NULL,NULL,11800,'pending','pending','2025-08-13 05:30:09',NULL,NULL),(48,5,NULL,'service',67,'2025-08-13 13:30:00',1800,NULL,NULL,11800,'pending','pending','2025-08-13 05:33:41',NULL,NULL),(49,5,NULL,'service',56,'2025-08-19 07:30:00',540,3540,NULL,3540,'cancelled','refunded','2025-08-19 00:55:34',1,'per_hour'),(50,5,NULL,'service',27,'2025-08-20 12:30:00',324,2124,NULL,2124,'pending','pending','2025-08-20 05:31:22',1,'per_hour'),(51,5,2,'service',27,'2025-08-20 12:30:00',324,2124,NULL,2124,'cancelled','refunded','2025-08-20 05:41:05',1,'per_hour');
+INSERT INTO `bookings` VALUES (1,5,NULL,'service',29,'2025-08-05 08:00:00',360,NULL,NULL,2360,'cancelled','refunded','2025-07-31 04:37:18',NULL,NULL),(2,5,NULL,'ride',NULL,'2025-08-01 19:44:00',NULL,1500,NULL,NULL,'pending','pending','2025-08-01 13:09:19',3,'per_hour'),(3,5,NULL,'ride',NULL,'2025-08-02 09:33:00',NULL,2500,NULL,NULL,'cancelled','refunded','2025-08-01 13:11:33',5,'per_hour'),(4,5,NULL,'ride',NULL,'2025-08-02 09:00:00',NULL,2500,NULL,NULL,'cancelled','refunded','2025-08-01 13:22:08',5,'per_hour'),(5,5,NULL,'ride',NULL,'2025-08-02 09:00:00',NULL,2500,NULL,NULL,'cancelled','refunded','2025-08-01 13:51:21',5,'per_hour'),(6,5,2,'ride',NULL,'2025-08-02 09:00:00',NULL,3000,NULL,NULL,'assigned','pending','2025-08-01 14:20:38',6,'per_hour'),(7,5,NULL,'service',65,'2025-08-02 10:00:00',90,NULL,NULL,590,'cancelled','refunded','2025-08-01 15:38:23',NULL,NULL),(8,5,NULL,'ride',NULL,'2025-08-02 05:00:00',NULL,6000,NULL,NULL,'cancelled','refunded','2025-08-01 15:40:55',12,'per_hour'),(9,5,NULL,'ride',NULL,'2025-08-02 10:00:00',NULL,30000,NULL,NULL,'cancelled','refunded','2025-08-01 15:44:02',60,'per_hour'),(10,5,NULL,'ride',NULL,'2025-08-02 01:20:00',NULL,5000,NULL,NULL,'cancelled','refunded','2025-08-01 15:48:48',10,'per_hour'),(11,5,4,'ride',NULL,'2025-08-02 22:22:00',NULL,5000,NULL,NULL,'assigned','pending','2025-08-01 15:50:11',10,'per_hour'),(12,5,NULL,'ride',NULL,'2025-08-03 09:58:00',NULL,6000,NULL,NULL,'cancelled','refunded','2025-08-02 04:28:45',12,'per_hour'),(13,5,2,'ride',NULL,'2025-08-04 10:10:00',NULL,5000,NULL,NULL,'assigned','pending','2025-08-02 04:41:07',10,'per_hour'),(14,5,NULL,'ride',NULL,'2025-08-03 10:11:00',NULL,5000,NULL,NULL,'pending','pending','2025-08-02 04:41:46',10,'per_hour'),(15,5,NULL,'ride',NULL,'2025-08-02 10:12:00',NULL,5000,NULL,NULL,'pending','pending','2025-08-02 04:42:34',10,'per_hour'),(16,5,NULL,'ride',NULL,'2025-08-02 10:13:00',NULL,3000,NULL,NULL,'pending','pending','2025-08-02 04:43:19',6,'per_hour'),(17,5,2,'ride',NULL,'2025-08-02 10:14:00',NULL,2500,NULL,NULL,'assigned','pending','2025-08-02 04:44:18',5,'per_hour'),(18,5,NULL,'service',32,'2025-08-03 10:00:00',1440,NULL,NULL,9440,'pending','pending','2025-08-02 05:02:25',NULL,NULL),(19,5,NULL,'service',32,'2025-08-03 11:00:00',720,NULL,NULL,4720,'pending','pending','2025-08-02 05:09:04',NULL,NULL),(20,5,5,'service',32,'2025-08-07 16:00:00',720,NULL,NULL,4720,'assigned','pending','2025-08-02 05:10:23',NULL,NULL),(21,5,NULL,'service',64,'2025-08-08 13:00:00',450,NULL,NULL,2950,'pending','pending','2025-08-02 05:10:48',NULL,NULL),(22,5,NULL,'service',32,'2025-08-08 12:00:00',720,NULL,NULL,4720,'pending','pending','2025-08-02 06:03:33',NULL,NULL),(23,5,NULL,'service',32,'2025-08-05 13:00:00',720,NULL,NULL,4720,'pending','pending','2025-08-02 06:04:09',NULL,NULL),(24,5,5,'service',33,'2025-08-03 11:00:00',1080,NULL,NULL,7080,'assigned','pending','2025-08-02 12:47:02',NULL,NULL),(25,5,2,'ride',NULL,'2025-08-03 21:23:00',NULL,2000,NULL,NULL,'assigned','pending','2025-08-02 12:50:48',4,'per_hour'),(26,5,NULL,'service',30,'2025-08-03 10:00:00',540,NULL,NULL,3540,'pending','pending','2025-08-02 13:10:37',NULL,NULL),(27,5,NULL,'service',32,'2025-08-03 10:00:00',720,NULL,NULL,4720,'pending','pending','2025-08-02 13:10:37',NULL,NULL),(28,5,NULL,'service',33,'2025-08-03 10:00:00',1080,NULL,NULL,7080,'pending','pending','2025-08-02 13:10:37',NULL,NULL),(29,5,6,'service',30,'2025-08-03 10:00:00',540,NULL,NULL,3540,'assigned','pending','2025-08-02 13:25:20',NULL,NULL),(30,5,2,'ride',NULL,'2025-08-03 20:04:00',NULL,2500,NULL,NULL,'assigned','pending','2025-08-02 13:36:58',5,'per_hour'),(31,5,NULL,'service',59,'2025-08-13 17:00:00',432,NULL,NULL,2832,'pending','pending','2025-08-13 08:41:16',NULL,NULL),(32,5,NULL,'service',29,'2025-08-15 18:00:00',360,NULL,NULL,2360,'pending','pending','2025-08-13 08:42:47',NULL,NULL),(33,5,NULL,'service',34,'2025-08-15 18:00:00',1440,NULL,NULL,9440,'pending','pending','2025-08-13 08:42:47',NULL,NULL),(34,5,NULL,'service',66,'2025-08-15 18:00:00',630,NULL,NULL,4130,'pending','pending','2025-08-13 08:42:47',NULL,NULL),(35,5,2,'service',67,'2025-08-19 18:00:00',1800,NULL,NULL,11800,'assigned','pending','2025-08-13 08:44:00',NULL,NULL),(36,5,2,'service',67,'2025-08-14 00:30:00',1800,NULL,NULL,11800,'assigned','pending','2025-08-13 09:05:37',NULL,NULL),(37,5,NULL,'service',67,'2025-08-14 00:30:00',1800,NULL,NULL,11800,'pending','pending','2025-08-13 03:40:21',NULL,NULL),(38,5,NULL,'service',67,'2025-08-13 19:00:00',1800,NULL,NULL,11800,'pending','pending','2025-08-13 03:52:35',NULL,NULL),(39,5,NULL,'service',67,'2025-08-13 19:00:00',1800,NULL,NULL,11800,'pending','pending','2025-08-13 03:55:15',NULL,NULL),(40,5,NULL,'service',67,'2025-08-13 19:00:00',1800,NULL,NULL,11800,'pending','pending','2025-08-13 04:21:26',NULL,NULL),(41,5,NULL,'service',67,'2025-08-13 19:00:00',1800,NULL,NULL,11800,'pending','pending','2025-08-13 04:24:58',NULL,NULL),(42,5,NULL,'service',67,'2025-08-13 19:00:00',1800,NULL,NULL,11800,'pending','pending','2025-08-13 04:26:26',NULL,NULL),(43,5,NULL,'service',67,'2025-08-14 19:00:00',1800,NULL,NULL,11800,'pending','pending','2025-08-13 04:30:46',NULL,NULL),(44,5,NULL,'service',67,'2025-08-13 13:30:00',1800,NULL,NULL,11800,'pending','pending','2025-08-13 04:33:01',NULL,NULL),(45,5,NULL,'service',67,'2025-08-13 13:30:00',1800,NULL,NULL,11800,'pending','pending','2025-08-13 04:43:48',NULL,NULL),(46,12,NULL,'service',59,'2025-08-13 13:30:00',216,NULL,NULL,1416,'pending','pending','2025-08-13 05:20:09',NULL,NULL),(47,5,NULL,'service',67,'2025-08-13 13:30:00',1800,NULL,NULL,11800,'pending','pending','2025-08-13 05:30:09',NULL,NULL),(48,5,NULL,'service',67,'2025-08-13 13:30:00',1800,NULL,NULL,11800,'pending','pending','2025-08-13 05:33:41',NULL,NULL),(49,5,NULL,'service',56,'2025-08-19 07:30:00',540,3540,NULL,3540,'cancelled','refunded','2025-08-19 00:55:34',1,'per_hour'),(50,5,NULL,'service',27,'2025-08-20 12:30:00',324,2124,NULL,2124,'cancelled','refunded','2025-08-20 05:31:22',1,'per_hour'),(51,5,2,'service',27,'2025-08-20 12:30:00',324,2124,NULL,2124,'cancelled','refunded','2025-08-20 05:41:05',1,'per_hour'),(52,5,NULL,'service',67,'2025-08-21 11:00:00',1800,11800,NULL,11800,'cancelled','refunded','2025-08-21 03:36:25',1,'per_hour'),(53,5,NULL,'ride',NULL,'2025-08-21 15:33:31',NULL,500,NULL,NULL,'cancelled','refunded','2025-08-21 10:03:31',1,'per_hour'),(54,5,2,'service',67,'2025-08-21 11:30:00',1800,11800,NULL,11800,'cancelled','refunded','2025-08-21 04:36:06',1,'per_hour'),(55,5,2,'service',67,'2025-08-22 01:00:00',1800,11800,NULL,11800,'cancelled','refunded','2025-08-21 04:59:07',1,'per_hour'),(56,5,2,'service',67,'2025-08-21 11:30:00',1800,11800,NULL,11800,'cancelled','refunded','2025-08-21 05:02:57',1,'per_hour'),(57,5,2,'service',25,'2025-08-26 11:00:00',1080,7080,NULL,7080,'cancelled','refunded','2025-08-26 01:33:17',1,'per_hour'),(58,5,NULL,'service',67,'2025-08-26 11:30:00',1800,11800,NULL,11800,'pending','pending','2025-08-26 01:38:01',1,'per_hour'),(59,5,NULL,'service',67,'2025-08-26 11:30:00',3600,23600,NULL,23600,'cancelled','refunded','2025-08-26 02:25:31',1,'per_hour'),(60,5,2,'service',67,'2025-09-10 12:00:00',1800,11800,NULL,11800,'assigned','pending','2025-09-10 04:59:08',1,'per_hour'),(61,5,2,'service',67,'2025-09-11 08:00:00',1800,11800,NULL,11800,'assigned','pending','2025-09-10 05:14:01',1,'per_hour'),(62,5,2,'ride',NULL,'2025-09-10 15:00:00',NULL,500,NULL,NULL,'assigned','pending','2025-09-10 11:14:06',1,'per_hour'),(63,5,NULL,'ride',NULL,'2025-09-10 17:07:26',NULL,500,NULL,NULL,'pending','pending','2025-09-10 11:37:26',1,'per_hour'),(64,5,NULL,'service',59,'2025-09-13 05:00:00',432,2832,NULL,2832,'pending','pending','2025-09-12 03:38:32',1,'per_hour'),(65,5,NULL,'service',59,'2025-09-15 10:00:00',216,1416,NULL,1416,'pending','pending','2025-09-14 03:17:08',1,'per_hour'),(66,5,2,'service',67,'2025-09-14 10:30:00',1800,11800,NULL,11800,'assigned','pending','2025-09-14 03:19:27',1,'per_hour'),(67,5,2,'service',67,'2025-09-14 12:00:00',1800,11800,NULL,11800,'assigned','pending','2025-09-14 03:30:01',1,'per_hour'),(68,5,NULL,'service',67,'2025-09-14 12:00:00',1800,11800,NULL,11800,'pending','pending','2025-09-14 03:41:11',1,'per_hour'),(69,5,NULL,'service',67,'2025-09-14 11:30:00',1800,11800,NULL,11800,'pending','pending','2025-09-14 03:43:32',1,'per_hour');
 /*!40000 ALTER TABLE `bookings` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -116,7 +108,7 @@ CREATE TABLE `carts` (
   KEY `subcategory_id` (`subcategory_id`),
   CONSTRAINT `carts_ibfk_1` FOREIGN KEY (`customer_id`) REFERENCES `customers` (`id`) ON DELETE CASCADE,
   CONSTRAINT `carts_ibfk_2` FOREIGN KEY (`subcategory_id`) REFERENCES `subcategories` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=36 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=53 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -125,6 +117,7 @@ CREATE TABLE `carts` (
 
 LOCK TABLES `carts` WRITE;
 /*!40000 ALTER TABLE `carts` DISABLE KEYS */;
+INSERT INTO `carts` VALUES (52,5,96,1,'2025-09-14 09:13:58');
 /*!40000 ALTER TABLE `carts` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -166,11 +159,7 @@ CREATE TABLE `customer_addresses` (
 
 LOCK TABLES `customer_addresses` WRITE;
 /*!40000 ALTER TABLE `customer_addresses` DISABLE KEYS */;
-<<<<<<< HEAD
-INSERT INTO `customer_addresses` VALUES (1,5,'2-5 Thimmaraopeta ','507168','Khammam','Telangana','India',0.00000000,0.00000000,_binary '\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0','home','Home',0,1,'2025-07-31 04:36:54','2025-08-13 11:03:29'),(2,12,'Nad, Visakhapatnam','530027','Visakhapatnam','Andhra pradesh','India',17.74349820,83.23240090,_binary '\0\0\0\0\0\0\0\ C \ \ T@  \ \ U 1@','home','home',0,1,'2025-08-13 10:49:44','2025-08-13 10:49:45'),(3,12,'Nad, Visakhapatnam','530027','Visakhapatnam','Andhra pradesh','India',17.74349820,83.23240090,_binary '\0\0\0\0\0\0\0\ C \ \ T@  \ \ U 1@','home','home',1,1,'2025-08-13 10:49:45','2025-08-13 10:49:45'),(4,5,'2-5 Thimmaraopeta','500012','Khammam',' Telangana','India',17.24653510,80.15003260,_binary '\0\0\0\0\0\0\0^ U\" 	T@\ П\ ?1@','work','',0,1,'2025-08-13 11:03:29','2025-08-13 11:03:30'),(5,5,'2-5 Thimmaraopeta','500012','Khammam',' Telangana','India',17.24653510,80.15003260,_binary '\0\0\0\0\0\0\0^ U\" 	T@\ П\ ?1@','work','',1,1,'2025-08-13 11:03:30','2025-08-13 11:03:30');
-=======
-INSERT INTO `customer_addresses` VALUES (1,5,'2-5 Thimmaraopeta ','507168','Khammam','Telangana','India',0.00000000,0.00000000,_binary '\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0','home','Home',0,1,'2025-07-31 04:36:54','2025-08-13 11:03:29'),(2,12,'Nad, Visakhapatnam','530027','Visakhapatnam','Andhra pradesh','India',17.74349820,83.23240090,_binary '\0\0\0\0\0\0\0\�C�\�\�T@��\�\�U�1@','home','home',0,1,'2025-08-13 10:49:44','2025-08-13 10:49:45'),(3,12,'Nad, Visakhapatnam','530027','Visakhapatnam','Andhra pradesh','India',17.74349820,83.23240090,_binary '\0\0\0\0\0\0\0\�C�\�\�T@��\�\�U�1@','home','home',1,1,'2025-08-13 10:49:45','2025-08-13 10:49:45'),(4,5,'2-5 Thimmaraopeta','500012','Khammam',' Telangana','India',17.24653510,80.15003260,_binary '\0\0\0\0\0\0\0^�U\"�	T@\�П\�?1@','work','',0,1,'2025-08-13 11:03:29','2025-08-13 11:03:30'),(5,5,'2-5 Thimmaraopeta','500012','Khammam',' Telangana','India',17.24653510,80.15003260,_binary '\0\0\0\0\0\0\0^�U\"�	T@\�П\�?1@','work','',1,1,'2025-08-13 11:03:30','2025-08-13 11:03:30');
->>>>>>> 873386f73b51fb24a0d8e39a3d78d4ffea533dac
+INSERT INTO `customer_addresses` VALUES (1,5,'2-5 Thimmaraopeta ','507168','Khammam','Telangana','India',0.00000000,0.00000000,ST_GeomFromText('POINT(0 0)',4326),'home','Home',0,1,'2025-07-31 04:36:54','2025-08-13 11:03:29'),(2,12,'Nad, Visakhapatnam','530027','Visakhapatnam','Andhra pradesh','India',17.74349820,83.23240090,ST_GeomFromText('POINT(83.23240090 17.74349820)',4326),'home','home',0,1,'2025-08-13 10:49:44','2025-08-13 10:49:45'),(3,12,'Nad, Visakhapatnam','530027','Visakhapatnam','Andhra pradesh','India',17.74349820,83.23240090,ST_GeomFromText('POINT(83.23240090 17.74349820)',4326),'home','home',1,1,'2025-08-13 10:49:45','2025-08-13 10:49:45'),(4,5,'2-5 Thimmaraopeta','500012','Khammam',' Telangana','India',17.24653510,80.15003260,ST_GeomFromText('POINT(80.15003260 17.24653510)',4326),'work','',0,1,'2025-08-13 11:03:29','2025-08-13 11:03:30'),(5,5,'2-5 Thimmaraopeta, 123','500012','Khammam',' Telangana','India',17.24653510,80.15003260,ST_GeomFromText('POINT(80.15003260 17.24653510)',4326),'work','',1,1,'2025-08-13 11:03:30','2025-08-29 05:36:01');
 /*!40000 ALTER TABLE `customer_addresses` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -201,7 +190,7 @@ CREATE TABLE `customers` (
 
 LOCK TABLES `customers` WRITE;
 /*!40000 ALTER TABLE `customers` DISABLE KEYS */;
-INSERT INTO `customers` VALUES (2,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(5,'2-5 Thimmaraopeta','507168','Khammam','Telangana','India',0.00000000,0.00000000),(12,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(13,NULL,NULL,NULL,NULL,NULL,NULL,NULL);
+INSERT INTO `customers` VALUES (2,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(5,'2-5 Thimmaraopeta','507168','Khammam','Telangana','India',0.00000000,0.00000000),(12,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(13,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(14,NULL,NULL,NULL,NULL,NULL,NULL,NULL);
 /*!40000 ALTER TABLE `customers` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -374,83 +363,6 @@ LOCK TABLES `provider_banking_details` WRITE;
 /*!40000 ALTER TABLE `provider_banking_details` DISABLE KEYS */;
 INSERT INTO `provider_banking_details` VALUES (1,2,'Tulasi Ram','1234567890144','SBI000045','SBI','USA,miami','savings',1,'verified','crt','2025-08-19 09:57:25','2025-08-20 09:39:56');
 /*!40000 ALTER TABLE `provider_banking_details` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `provider_data`
---
-
-DROP TABLE IF EXISTS `provider_data`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `provider_data` (
-  `provider_id` int NOT NULL AUTO_INCREMENT,
-  `user_id` int NOT NULL COMMENT 'FK to the original users table id',
-  `full_name` varchar(100) NOT NULL COMMENT 'From users.name',
-  `email` varchar(100) NOT NULL COMMENT 'From users.email',
-  `phone_number` varchar(15) NOT NULL COMMENT 'From users.phone_number',
-  `bio` text,
-  `profile_picture_url` varchar(255) DEFAULT NULL,
-  `permanent_address` varchar(255) DEFAULT NULL,
-  `alternate_email` varchar(100) DEFAULT NULL,
-  `alternate_phone_number` varchar(15) DEFAULT NULL,
-  `emergency_contact_name` varchar(100) DEFAULT NULL,
-  `emergency_contact_relationship` varchar(50) DEFAULT NULL,
-  `emergency_contact_phone` varchar(15) DEFAULT NULL,
-  `experience_years` int DEFAULT NULL,
-  `rating` decimal(3,2) DEFAULT NULL,
-  `is_verified` tinyint(1) DEFAULT '0' COMMENT 'Admin verified provider',
-  `is_active` tinyint(1) DEFAULT '1' COMMENT 'Provider is active on the platform',
-  `last_active_at` timestamp NULL DEFAULT NULL,
-  `service_radius_km` int DEFAULT NULL,
-  `current_location_lat` decimal(10,8) DEFAULT NULL,
-  `current_location_lng` decimal(11,8) DEFAULT NULL,
-  `driver_license_number` varchar(50) DEFAULT NULL,
-  `driver_license_expiry_date` date DEFAULT NULL,
-  `vehicles` json DEFAULT NULL COMMENT 'Array of vehicle objects, e.g., [{"make": "Toyota", "model": "Innova", "reg_no": "MH12AB1234"}, ...]',
-  `qualifications` json DEFAULT NULL COMMENT 'Array of qualification objects, e.g., [{"name": "ITI Diploma", "institution": "Govt. Polytechnic"}, ...]',
-  `documents` json DEFAULT NULL COMMENT 'Array of document objects, e.g., [{"type": "identity_proof", "url": "...", "status": "approved"}, ...]',
-  `primary_bank_account_holder_name` varchar(100) DEFAULT NULL,
-  `primary_bank_account_number` varchar(50) DEFAULT NULL,
-  `primary_bank_ifsc_code` varchar(11) DEFAULT NULL,
-  `primary_bank_name` varchar(100) DEFAULT NULL,
-  `primary_bank_account_type` enum('savings','current') DEFAULT NULL,
-  `primary_bank_status` enum('unverified','verified','rejected','archived') DEFAULT 'unverified',
-  `notify_on_job_alerts` tinyint(1) DEFAULT '1',
-  `notify_on_messages` tinyint(1) DEFAULT '1',
-  `auto_accept_jobs` tinyint(1) DEFAULT '0',
-  `max_jobs_per_day` int DEFAULT NULL,
-  `profile_visibility` enum('public','platform_only') DEFAULT 'platform_only',
-  `location_sharing_mode` enum('on_job','always_on','off') DEFAULT 'on_job',
-  `preferred_language` varchar(10) DEFAULT 'en-US',
-  `preferred_currency` varchar(3) DEFAULT 'INR',
-  `distance_unit` enum('km','miles') DEFAULT 'km',
-  `acquisition_source` varchar(100) DEFAULT NULL,
-  `referrer_provider_id` int DEFAULT NULL,
-  `business_type` enum('individual','small_business','company') DEFAULT 'individual',
-  `can_be_featured` tinyint(1) DEFAULT '0',
-  `willing_to_offer_promos` tinyint(1) DEFAULT '0',
-  `provider_tier` enum('Bronze','Silver','Gold','Platinum') DEFAULT NULL,
-  `services_offered` json DEFAULT NULL COMMENT 'Array of service objects with pricing, e.g., [{"subcategory_id": 5, "name": "AC Repair", "pricing_model": "per_hour", "rate": 500}, ...]',
-  `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
-  `updated_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  PRIMARY KEY (`provider_id`),
-  UNIQUE KEY `user_id` (`user_id`),
-  UNIQUE KEY `email` (`email`),
-  UNIQUE KEY `phone_number` (`phone_number`),
-  KEY `email_2` (`email`),
-  KEY `phone_number_2` (`phone_number`),
-  KEY `is_active` (`is_active`,`is_verified`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `provider_data`
---
-
-LOCK TABLES `provider_data` WRITE;
-/*!40000 ALTER TABLE `provider_data` DISABLE KEYS */;
-/*!40000 ALTER TABLE `provider_data` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -644,6 +556,8 @@ CREATE TABLE `providers` (
   `emergency_contact_name` varchar(100) DEFAULT NULL COMMENT 'Full name of the emergency contact',
   `emergency_contact_relationship` varchar(50) DEFAULT NULL COMMENT 'Relationship of the emergency contact (e.g., Spouse, Parent)',
   `emergency_contact_phone` varchar(15) DEFAULT NULL COMMENT 'Phone number of the emergency contact',
+  `average_rating` decimal(3,2) DEFAULT '0.00',
+  `rating_count` int DEFAULT '0',
   PRIMARY KEY (`id`),
   KEY `user_id` (`user_id`),
   CONSTRAINT `providers_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`)
@@ -656,8 +570,40 @@ CREATE TABLE `providers` (
 
 LOCK TABLES `providers` WRITE;
 /*!40000 ALTER TABLE `providers` DISABLE KEYS */;
-INSERT INTO `providers` VALUES (1,4,1,0.00,'Messi Koduku ni raa Saaleeeee',1,1,'2025-08-02 06:07:14',10,17.23170000,80.18260000,'2025-07-30 07:45:19','2025-08-02 06:07:14','messikoduku@gmail.com','6969696969','worker pilagadu','child','9876543210'),(2,7,2,0.00,'hi there, best bathroom cleaner here',1,1,'2025-08-20 11:02:37',100,17.24653510,80.15003260,'2025-08-01 04:04:00','2025-08-20 11:02:37','suhail.mscellpoint@gmail.com','09666339939','Suhail','friend','9666339939'),(3,8,1,0.00,'Experienced driver, zero cut on Nehru ORR',1,1,'2025-08-01 14:39:12',100,17.24653510,80.15003260,'2025-08-01 13:50:13','2025-08-20 09:50:58','suhail.mscellpoint@gmail.com','09666339939','driver tammudu','friend','01234567890'),(4,9,1,0.00,'thop driver',1,1,'2025-08-01 15:49:27',10,17.72148220,83.29009770,'2025-08-01 15:43:18','2025-08-01 15:49:27','tulasi@gmail.com','7894561230','tulasi ram ','friend','7894561230'),(5,10,5,0.00,'Best carpenter and AC Mechanic',1,1,'2025-08-02 13:23:01',50,17.24653510,80.15003260,'2025-08-02 05:00:45','2025-08-02 13:23:01','mittalmawa@gmail.com','09666339939','tulasi ram ','friend','7894561230'),(6,11,2,0.00,'bio ',1,1,'2025-08-02 13:24:11',50,17.24653510,80.15003260,'2025-08-02 13:17:08','2025-08-02 13:24:11','test21@gmail.com','7418259630','messi@gmail.com','friend','7418529630');
+INSERT INTO `providers` VALUES (1,4,1,0.00,'Messi Koduku ni raa Saaleeeee',1,1,'2025-08-02 06:07:14',10,17.23170000,80.18260000,'2025-07-30 07:45:19','2025-08-02 06:07:14','messikoduku@gmail.com','6969696969','worker pilagadu','child','9876543210',0.00,0),(2,7,2,0.00,'hi there, best bathroom cleaner here',1,1,'2025-09-14 09:24:07',100,17.24653510,80.15003260,'2025-08-01 04:04:00','2025-09-14 09:24:07','suhail.mscellpoint@gmail.com','09666339939','Suhail','friend','9666339939',0.00,0),(3,8,1,0.00,'Experienced driver, zero cut on Nehru ORR',1,1,'2025-08-01 14:39:12',100,17.24653510,80.15003260,'2025-08-01 13:50:13','2025-08-20 09:50:58','suhail.mscellpoint@gmail.com','09666339939','driver tammudu','friend','01234567890',0.00,0),(4,9,1,0.00,'thop driver',1,1,'2025-08-01 15:49:27',10,17.72148220,83.29009770,'2025-08-01 15:43:18','2025-08-01 15:49:27','tulasi@gmail.com','7894561230','tulasi ram ','friend','7894561230',0.00,0),(5,10,5,0.00,'Best carpenter and AC Mechanic',1,1,'2025-08-02 13:23:01',50,17.24653510,80.15003260,'2025-08-02 05:00:45','2025-08-02 13:23:01','mittalmawa@gmail.com','09666339939','tulasi ram ','friend','7894561230',0.00,0),(6,11,2,0.00,'bio ',1,1,'2025-08-02 13:24:11',50,17.24653510,80.15003260,'2025-08-02 13:17:08','2025-08-02 13:24:11','test21@gmail.com','7418259630','messi@gmail.com','friend','7418529630',0.00,0);
 /*!40000 ALTER TABLE `providers` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `ratings`
+--
+
+DROP TABLE IF EXISTS `ratings`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `ratings` (
+  `id` bigint NOT NULL AUTO_INCREMENT,
+  `booking_id` int NOT NULL,
+  `rater_id` int NOT NULL,
+  `ratee_id` int NOT NULL,
+  `ratee_type` enum('customer','provider') NOT NULL,
+  `rating` decimal(2,1) NOT NULL,
+  `review` text,
+  `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `unique_rating` (`booking_id`,`rater_id`),
+  CONSTRAINT `ratings_ibfk_1` FOREIGN KEY (`booking_id`) REFERENCES `bookings` (`id`) ON DELETE CASCADE,
+  CONSTRAINT `ratings_chk_1` CHECK ((`rating` between 1 and 5))
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `ratings`
+--
+
+LOCK TABLES `ratings` WRITE;
+/*!40000 ALTER TABLE `ratings` DISABLE KEYS */;
+/*!40000 ALTER TABLE `ratings` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -688,7 +634,7 @@ CREATE TABLE `ride_bookings` (
 
 LOCK TABLES `ride_bookings` WRITE;
 /*!40000 ALTER TABLE `ride_bookings` DISABLE KEYS */;
-INSERT INTO `ride_bookings` VALUES (2,1,NULL,'Thimmaraopet, Enkoor mandal, Khammam, Telangana, India',17.37392240,80.36608580,'Khammam, Telangana, India',17.17291890,80.40575370),(3,1,NULL,'Thimmaraopet, Enkoor mandal, Khammam, Telangana, India',17.37392240,80.36608580,'Khammam, Telangana, India',17.17291890,80.40575370),(4,1,NULL,'Thimmaraopet, Enkoor mandal, Khammam, Telangana, India',17.37392240,80.36608580,'Khammam, Khammam Urban mandal, Khammam, Telangana, 507003, India',17.24653510,80.15003260),(5,1,NULL,'Thimmaraopet, Enkoor mandal, Khammam, Telangana, India',17.37392240,80.36608580,'Khammam, Khammam Urban mandal, Khammam, Telangana, 507003, India',17.24653510,80.15003260),(6,1,NULL,'Khammam, Khammam Urban mandal, Khammam, Telangana, 507003, India',17.24653510,80.15003260,'Hyderabad, Telangana, India',17.38878590,78.46106470),(8,1,NULL,'Vishakapatnam Ralway Station, Railway New Colony, Visakhapatnam, Visakhapatnam (Urban), Visakhapatnam, Andhra Pradesh, 530001, India',17.72148220,83.29009770,'Khammam, Khammam Urban mandal, Khammam, Telangana, 507003, India',17.24653510,80.15003260),(9,1,NULL,'Vishakapatnam Ralway Station, Railway New Colony, Visakhapatnam, Visakhapatnam (Urban), Visakhapatnam, Andhra Pradesh, 530001, India',17.72148220,83.29009770,'Khammam, Khammam Urban mandal, Khammam, Telangana, 507003, India',17.24653510,80.15003260),(10,1,NULL,'Vishakapatnam Ralway Station, Railway New Colony, Visakhapatnam, Visakhapatnam (Urban), Visakhapatnam, Andhra Pradesh, 530001, India',17.72148220,83.29009770,'Khammam, Khammam Urban mandal, Khammam, Telangana, 507003, India',17.24653510,80.15003260),(11,1,NULL,'Vishakapatnam Ralway Station, Railway New Colony, Visakhapatnam, Visakhapatnam (Urban), Visakhapatnam, Andhra Pradesh, 530001, India',17.72148220,83.29009770,'Khammam, Khammam Urban mandal, Khammam, Telangana, 507003, India',17.24653510,80.15003260),(12,1,NULL,'Khammam, Khammam Urban mandal, Khammam, Telangana, 507003, India',17.24653510,80.15003260,'Visakhapatnam, Visakhapatnam (Urban), Visakhapatnam, Andhra Pradesh, 530001, India',17.69355260,83.29212970),(13,1,NULL,'Khammam, Khammam Urban mandal, Khammam, Telangana, 507003, India',17.24653510,80.15003260,'Visakhapatnam, Visakhapatnam (Urban), Visakhapatnam, Andhra Pradesh, 530001, India',17.69355260,83.29212970),(14,1,NULL,'Delhi, India',28.63280270,77.21977130,'Mumbai, Maharashtra, India',19.05499900,72.86920350),(15,1,NULL,'Mumbai, Maharashtra, India',19.05499900,72.86920350,'Hyderabad, Bahadurpura mandal, Hyderabad, Telangana, India',17.36058900,78.47406130),(16,1,NULL,'Hyderabad, Bahadurpura mandal, Hyderabad, Telangana, India',17.36058900,78.47406130,'Thimmaraopet, Enkoor mandal, Khammam, Telangana, India',17.37392240,80.36608580),(17,1,NULL,'Pandurangapuram, Khammam Urban mandal, Khammam, Telangana, 507002, India',17.27357790,80.17890230,'Bhadrachalam Road, NH30, Kothagudem, Kothagudem mandal, Bhadradri Kothagudem, Telangana, 507101, India',17.55129160,80.61445350),(25,1,NULL,'తిమ్మారావుపేట, Enkoor mandal, ఖమ్మం, Telangana, India',17.37392240,80.36608580,'Visakhapatnam, విశాఖపట్నం (పట్టణ), విశాఖపట్నం, Andhra Pradesh, 530001, India',17.69355260,83.29212970),(30,1,NULL,'తిమ్మారావుపేట, Enkoor mandal, ఖమ్మం, Telangana, India',17.37392240,80.36608580,'Hyderabad, Bahadurpura mandal, హైదరాబాదు, Telangana, India',17.36058900,78.47406130);
+INSERT INTO `ride_bookings` VALUES (2,1,NULL,'Thimmaraopet, Enkoor mandal, Khammam, Telangana, India',17.37392240,80.36608580,'Khammam, Telangana, India',17.17291890,80.40575370),(3,1,NULL,'Thimmaraopet, Enkoor mandal, Khammam, Telangana, India',17.37392240,80.36608580,'Khammam, Telangana, India',17.17291890,80.40575370),(4,1,NULL,'Thimmaraopet, Enkoor mandal, Khammam, Telangana, India',17.37392240,80.36608580,'Khammam, Khammam Urban mandal, Khammam, Telangana, 507003, India',17.24653510,80.15003260),(5,1,NULL,'Thimmaraopet, Enkoor mandal, Khammam, Telangana, India',17.37392240,80.36608580,'Khammam, Khammam Urban mandal, Khammam, Telangana, 507003, India',17.24653510,80.15003260),(6,1,NULL,'Khammam, Khammam Urban mandal, Khammam, Telangana, 507003, India',17.24653510,80.15003260,'Hyderabad, Telangana, India',17.38878590,78.46106470),(8,1,NULL,'Vishakapatnam Ralway Station, Railway New Colony, Visakhapatnam, Visakhapatnam (Urban), Visakhapatnam, Andhra Pradesh, 530001, India',17.72148220,83.29009770,'Khammam, Khammam Urban mandal, Khammam, Telangana, 507003, India',17.24653510,80.15003260),(9,1,NULL,'Vishakapatnam Ralway Station, Railway New Colony, Visakhapatnam, Visakhapatnam (Urban), Visakhapatnam, Andhra Pradesh, 530001, India',17.72148220,83.29009770,'Khammam, Khammam Urban mandal, Khammam, Telangana, 507003, India',17.24653510,80.15003260),(10,1,NULL,'Vishakapatnam Ralway Station, Railway New Colony, Visakhapatnam, Visakhapatnam (Urban), Visakhapatnam, Andhra Pradesh, 530001, India',17.72148220,83.29009770,'Khammam, Khammam Urban mandal, Khammam, Telangana, 507003, India',17.24653510,80.15003260),(11,1,NULL,'Vishakapatnam Ralway Station, Railway New Colony, Visakhapatnam, Visakhapatnam (Urban), Visakhapatnam, Andhra Pradesh, 530001, India',17.72148220,83.29009770,'Khammam, Khammam Urban mandal, Khammam, Telangana, 507003, India',17.24653510,80.15003260),(12,1,NULL,'Khammam, Khammam Urban mandal, Khammam, Telangana, 507003, India',17.24653510,80.15003260,'Visakhapatnam, Visakhapatnam (Urban), Visakhapatnam, Andhra Pradesh, 530001, India',17.69355260,83.29212970),(13,1,NULL,'Khammam, Khammam Urban mandal, Khammam, Telangana, 507003, India',17.24653510,80.15003260,'Visakhapatnam, Visakhapatnam (Urban), Visakhapatnam, Andhra Pradesh, 530001, India',17.69355260,83.29212970),(14,1,NULL,'Delhi, India',28.63280270,77.21977130,'Mumbai, Maharashtra, India',19.05499900,72.86920350),(15,1,NULL,'Mumbai, Maharashtra, India',19.05499900,72.86920350,'Hyderabad, Bahadurpura mandal, Hyderabad, Telangana, India',17.36058900,78.47406130),(16,1,NULL,'Hyderabad, Bahadurpura mandal, Hyderabad, Telangana, India',17.36058900,78.47406130,'Thimmaraopet, Enkoor mandal, Khammam, Telangana, India',17.37392240,80.36608580),(17,1,NULL,'Pandurangapuram, Khammam Urban mandal, Khammam, Telangana, 507002, India',17.27357790,80.17890230,'Bhadrachalam Road, NH30, Kothagudem, Kothagudem mandal, Bhadradri Kothagudem, Telangana, 507101, India',17.55129160,80.61445350),(25,1,NULL,'తిమ్మారావుపేట, Enkoor mandal, ఖమ్మం, Telangana, India',17.37392240,80.36608580,'Visakhapatnam, విశాఖపట్నం (పట్టణ), విశాఖపట్నం, Andhra Pradesh, 530001, India',17.69355260,83.29212970),(30,1,NULL,'తిమ్మారావుపేట, Enkoor mandal, ఖమ్మం, Telangana, India',17.37392240,80.36608580,'Hyderabad, Bahadurpura mandal, హైదరాబాదు, Telangana, India',17.36058900,78.47406130),(53,1,NULL,'తిమ్మారావుపేట, Enkoor mandal, ఖమ్మం, Telangana, India',17.37392240,80.36608580,'Hyderabad, Bahadurpura mandal, హైదరాబాదు, Telangana, India',17.36058900,78.47406130),(62,1,NULL,'తిమ్మారావుపేట, Enkoor mandal, ఖమ్మం, Telangana, India',17.37392240,80.36608580,'Hyderabad, Bahadurpura mandal, హైదరాబాదు, Telangana, India',17.36058900,78.47406130),(63,1,NULL,'తిమ్మారావుపేట, Enkoor mandal, ఖమ్మం, Telangana, India',17.37392240,80.36608580,'Hyderabad, Bahadurpura mandal, హైదరాబాదు, Telangana, India',17.36058900,78.47406130);
 /*!40000 ALTER TABLE `ride_bookings` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -764,7 +710,7 @@ CREATE TABLE `service_bookings` (
 
 LOCK TABLES `service_bookings` WRITE;
 /*!40000 ALTER TABLE `service_bookings` DISABLE KEYS */;
-INSERT INTO `service_bookings` VALUES (1,'2-5 Thimmaraopeta, Khammam, Telangana - 507168, India'),(7,'2-5 Thimmaraopeta, Khammam, Telangana - 507168, India'),(18,'2-5 Thimmaraopeta, Khammam, Telangana - 507168, India'),(19,'2-5 Thimmaraopeta, Khammam, Telangana - 507168, India'),(20,'2-5 Thimmaraopeta, Khammam, Telangana - 507168, India'),(21,'2-5 Thimmaraopeta, Khammam, Telangana - 507168, India'),(22,'2-5 Thimmaraopeta, Khammam, Telangana - 507168, India'),(23,'2-5 Thimmaraopeta, Khammam, Telangana - 507168, India'),(24,'2-5 Thimmaraopeta, Khammam, Telangana - 507168, India'),(26,'2-5 Thimmaraopeta, Khammam, Telangana - 507168, India'),(27,'2-5 Thimmaraopeta, Khammam, Telangana - 507168, India'),(28,'2-5 Thimmaraopeta, Khammam, Telangana - 507168, India'),(29,'2-5 Thimmaraopeta, Khammam, Telangana - 507168, India'),(31,'2-5 Thimmaraopeta, Khammam, Telangana - 507168, India'),(32,'2-5 Thimmaraopeta, Khammam, Telangana - 507168, India'),(33,'2-5 Thimmaraopeta, Khammam, Telangana - 507168, India'),(34,'2-5 Thimmaraopeta, Khammam, Telangana - 507168, India'),(35,'2-5 Thimmaraopeta, Khammam, Telangana - 507168, India'),(36,'2-5 Thimmaraopeta, Khammam, Telangana - 507168, India'),(37,'2-5 Thimmaraopeta, Khammam, Telangana - 507168, India'),(38,'2-5 Thimmaraopeta, Khammam, Telangana - 507168, India'),(39,'2-5 Thimmaraopeta, Khammam, Telangana - 507168, India'),(40,'2-5 Thimmaraopeta, Khammam, Telangana - 507168, India'),(41,'2-5 Thimmaraopeta, Khammam, Telangana - 507168, India'),(42,'2-5 Thimmaraopeta, Khammam, Telangana - 507168, India'),(43,'2-5 Thimmaraopeta, Khammam, Telangana - 507168, India'),(44,'2-5 Thimmaraopeta, Khammam, Telangana - 507168, India'),(45,'2-5 Thimmaraopeta, Khammam, Telangana - 507168, India'),(46,'Nad, Visakhapatnam, Visakhapatnam, Andhra pradesh - 530027, India'),(47,'2-5 Thimmaraopeta , Khammam, Telangana - 507168, India'),(48,'2-5 Thimmaraopeta, Khammam,  Telangana - 500012, India'),(49,'2-5 Thimmaraopeta, Khammam,  Telangana - 500012, India'),(50,'2-5 Thimmaraopeta, Khammam,  Telangana - 500012, India'),(51,'2-5 Thimmaraopeta, Khammam,  Telangana - 500012, India');
+INSERT INTO `service_bookings` VALUES (1,'2-5 Thimmaraopeta, Khammam, Telangana - 507168, India'),(7,'2-5 Thimmaraopeta, Khammam, Telangana - 507168, India'),(18,'2-5 Thimmaraopeta, Khammam, Telangana - 507168, India'),(19,'2-5 Thimmaraopeta, Khammam, Telangana - 507168, India'),(20,'2-5 Thimmaraopeta, Khammam, Telangana - 507168, India'),(21,'2-5 Thimmaraopeta, Khammam, Telangana - 507168, India'),(22,'2-5 Thimmaraopeta, Khammam, Telangana - 507168, India'),(23,'2-5 Thimmaraopeta, Khammam, Telangana - 507168, India'),(24,'2-5 Thimmaraopeta, Khammam, Telangana - 507168, India'),(26,'2-5 Thimmaraopeta, Khammam, Telangana - 507168, India'),(27,'2-5 Thimmaraopeta, Khammam, Telangana - 507168, India'),(28,'2-5 Thimmaraopeta, Khammam, Telangana - 507168, India'),(29,'2-5 Thimmaraopeta, Khammam, Telangana - 507168, India'),(31,'2-5 Thimmaraopeta, Khammam, Telangana - 507168, India'),(32,'2-5 Thimmaraopeta, Khammam, Telangana - 507168, India'),(33,'2-5 Thimmaraopeta, Khammam, Telangana - 507168, India'),(34,'2-5 Thimmaraopeta, Khammam, Telangana - 507168, India'),(35,'2-5 Thimmaraopeta, Khammam, Telangana - 507168, India'),(36,'2-5 Thimmaraopeta, Khammam, Telangana - 507168, India'),(37,'2-5 Thimmaraopeta, Khammam, Telangana - 507168, India'),(38,'2-5 Thimmaraopeta, Khammam, Telangana - 507168, India'),(39,'2-5 Thimmaraopeta, Khammam, Telangana - 507168, India'),(40,'2-5 Thimmaraopeta, Khammam, Telangana - 507168, India'),(41,'2-5 Thimmaraopeta, Khammam, Telangana - 507168, India'),(42,'2-5 Thimmaraopeta, Khammam, Telangana - 507168, India'),(43,'2-5 Thimmaraopeta, Khammam, Telangana - 507168, India'),(44,'2-5 Thimmaraopeta, Khammam, Telangana - 507168, India'),(45,'2-5 Thimmaraopeta, Khammam, Telangana - 507168, India'),(46,'Nad, Visakhapatnam, Visakhapatnam, Andhra pradesh - 530027, India'),(47,'2-5 Thimmaraopeta , Khammam, Telangana - 507168, India'),(48,'2-5 Thimmaraopeta, Khammam,  Telangana - 500012, India'),(49,'2-5 Thimmaraopeta, Khammam,  Telangana - 500012, India'),(50,'2-5 Thimmaraopeta, Khammam,  Telangana - 500012, India'),(51,'2-5 Thimmaraopeta, Khammam,  Telangana - 500012, India'),(52,'2-5 Thimmaraopeta, Khammam,  Telangana - 500012, India'),(54,'2-5 Thimmaraopeta, Khammam,  Telangana - 500012, India'),(55,'2-5 Thimmaraopeta, Khammam,  Telangana - 500012, India'),(56,'2-5 Thimmaraopeta, Khammam,  Telangana - 500012, India'),(57,'2-5 Thimmaraopeta, Khammam,  Telangana - 500012, India'),(58,'2-5 Thimmaraopeta, Khammam,  Telangana - 500012, India'),(59,'2-5 Thimmaraopeta, Khammam,  Telangana - 500012, India'),(60,'2-5 Thimmaraopeta, 123, Khammam,  Telangana - 500012, India'),(61,'2-5 Thimmaraopeta, 123, Khammam,  Telangana - 500012, India'),(64,'2-5 Thimmaraopeta, 123, Khammam,  Telangana - 500012, India'),(65,'2-5 Thimmaraopeta, 123, Khammam,  Telangana - 500012, India'),(66,'2-5 Thimmaraopeta, 123, Khammam,  Telangana - 500012, India'),(67,'2-5 Thimmaraopeta, 123, Khammam,  Telangana - 500012, India'),(68,'2-5 Thimmaraopeta, 123, Khammam,  Telangana - 500012, India'),(69,'2-5 Thimmaraopeta, 123, Khammam,  Telangana - 500012, India');
 /*!40000 ALTER TABLE `service_bookings` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -839,7 +785,7 @@ CREATE TABLE `user_roles` (
   KEY `role_id` (`role_id`),
   CONSTRAINT `user_roles_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`),
   CONSTRAINT `user_roles_ibfk_2` FOREIGN KEY (`role_id`) REFERENCES `roles` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -848,7 +794,7 @@ CREATE TABLE `user_roles` (
 
 LOCK TABLES `user_roles` WRITE;
 /*!40000 ALTER TABLE `user_roles` DISABLE KEYS */;
-INSERT INTO `user_roles` VALUES (2,2,4),(3,3,3),(4,4,2),(5,5,1),(6,6,3),(7,7,2),(8,8,2),(9,9,2),(10,10,2),(11,11,2),(12,12,1),(13,13,1);
+INSERT INTO `user_roles` VALUES (2,2,4),(3,3,3),(4,4,2),(5,5,1),(6,6,3),(7,7,2),(8,8,2),(9,9,2),(10,10,2),(11,11,2),(12,12,1),(13,13,1),(14,14,1);
 /*!40000 ALTER TABLE `user_roles` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -870,7 +816,7 @@ CREATE TABLE `users` (
   `gender` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `email` (`email`)
-) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -879,7 +825,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (2,'super admin','superadmin@otw.com','$2b$10$Y/hsbzGdXiC27mLi3mjE1.R02KZ8zy1SFhsgDFJsr.ODD/zmujxZS',1,'2025-07-30 07:41:08',NULL,'prefer_not_to_say'),(3,'admin','admin@otw.com','$2b$10$YNBUMXyo2RWvlUE3qeA93eu/JGPpko0cBGZIL9B7dZ0RLztKuZNNa',1,'2025-07-30 07:43:57','7894561230','female'),(4,'Messi Gadi  Worker','messikoduku@otw.com','$2b$10$wgK1UNdeDiChC98GTFEu6.kPuldUPzoEw0N3LR/HHbPl6.d90cUii',1,'2025-07-30 07:45:19','7894561230',NULL),(5,'suhail mahamad','suhail@gmail.com','$2b$10$NMHFools5i5H51nnaYtpiuxEOgv5p/jroe1KP6NqH8fFQrBYjOewy',1,'2025-07-30 10:19:11','9666339939','male'),(6,'admin with gender','adminwithgender@otw.com','$2b$10$NgCjRzbG/fVugJmmfkKD4Obxet967ce6151uAn1x4AiO5Mx7rCTVa',1,'2025-07-31 09:17:08','1234567890','male'),(7,'worker test','worker@otw.com','$2b$10$NKLoK3bz4E3haEWN3f7Z5.DRXva/vomRnXtmJ3CCRn4uAc./YicM.',1,'2025-08-01 04:04:00','7418529630',NULL),(8,'driver test','driverworker@otw.com','$2b$10$r4zhtN.y2Rox2fYKsIFr7O51bXAr1wMudK/y3WuNRjx8OsX76cxQa',1,'2025-08-01 13:50:13','7894561230',NULL),(9,'vizag worker','vizagworker@otw.com','$2b$10$Lh9oLH5OpImYVKgaicUQe.ozFqggCQCaL/J9kW3lsPjV3uMwsYZGq',1,'2025-08-01 15:43:18',NULL,NULL),(10,'maintenence worker','maintenence@otw.com','$2b$10$vFdKTRMEgXyuuCO6oBopqOTozWY/c7oZYAykXRTQqkFbCWQAcSSP2',1,'2025-08-02 05:00:45','7485961230',NULL),(11,'test name','maintenence1@otw.com','$2b$10$he2eFZDfSzz.Cr1n2O2.veQc9z5jsTd.r8genX7hvsHmkZ3dIN0U.',1,'2025-08-02 13:17:08','7418529630',NULL),(12,'Tulasi  ram','tulasi@gmail.com','$2b$10$Ax2pz8OFD2tY/poDXLoKQObFKR3GZ5iwY2IEuobekFjnlHzBVUJka',1,'2025-08-13 10:29:25',NULL,NULL),(13,'tulasiram M','tulasiram@gmail.com','$2b$10$TecmrqYrN3iBl05.GzvBmeBzm0aEO06jhLTzcXfAsScKamvGRUDtW',1,'2025-08-13 10:41:45',NULL,NULL);
+INSERT INTO `users` VALUES (2,'super admin','superadmin@otw.com','$2b$10$Y/hsbzGdXiC27mLi3mjE1.R02KZ8zy1SFhsgDFJsr.ODD/zmujxZS',1,'2025-07-30 07:41:08',NULL,'prefer_not_to_say'),(3,'admin','admin@otw.com','$2b$10$YNBUMXyo2RWvlUE3qeA93eu/JGPpko0cBGZIL9B7dZ0RLztKuZNNa',1,'2025-07-30 07:43:57','7894561230','female'),(4,'Messi Gadi  Worker','messikoduku@otw.com','$2b$10$wgK1UNdeDiChC98GTFEu6.kPuldUPzoEw0N3LR/HHbPl6.d90cUii',1,'2025-07-30 07:45:19','7894561230',NULL),(5,'suhail mahamad','suhail@gmail.com','$2b$10$NMHFools5i5H51nnaYtpiuxEOgv5p/jroe1KP6NqH8fFQrBYjOewy',1,'2025-07-30 10:19:11','9666339939','male'),(6,'admin with gender','adminwithgender@otw.com','$2b$10$NgCjRzbG/fVugJmmfkKD4Obxet967ce6151uAn1x4AiO5Mx7rCTVa',1,'2025-07-31 09:17:08','1234567890','male'),(7,'worker test','worker@otw.com','$2b$10$NKLoK3bz4E3haEWN3f7Z5.DRXva/vomRnXtmJ3CCRn4uAc./YicM.',1,'2025-08-01 04:04:00','7418529630','female'),(8,'driver test','driverworker@otw.com','$2b$10$r4zhtN.y2Rox2fYKsIFr7O51bXAr1wMudK/y3WuNRjx8OsX76cxQa',1,'2025-08-01 13:50:13','7894561230',NULL),(9,'vizag worker','vizagworker@otw.com','$2b$10$Lh9oLH5OpImYVKgaicUQe.ozFqggCQCaL/J9kW3lsPjV3uMwsYZGq',1,'2025-08-01 15:43:18',NULL,NULL),(10,'maintenence worker','maintenence@otw.com','$2b$10$vFdKTRMEgXyuuCO6oBopqOTozWY/c7oZYAykXRTQqkFbCWQAcSSP2',1,'2025-08-02 05:00:45','7485961230',NULL),(11,'test name','maintenence1@otw.com','$2b$10$he2eFZDfSzz.Cr1n2O2.veQc9z5jsTd.r8genX7hvsHmkZ3dIN0U.',1,'2025-08-02 13:17:08','7418529630',NULL),(12,'Tulasi  ram','tulasi@gmail.com','$2b$10$Ax2pz8OFD2tY/poDXLoKQObFKR3GZ5iwY2IEuobekFjnlHzBVUJka',1,'2025-08-13 10:29:25',NULL,NULL),(13,'tulasiram M','tulasiram@gmail.com','$2b$10$TecmrqYrN3iBl05.GzvBmeBzm0aEO06jhLTzcXfAsScKamvGRUDtW',1,'2025-08-13 10:41:45',NULL,NULL),(14,'Tulasi ram M','tulasiram0915@gmail.com','$2b$10$AyW3YbsfU31nN65CdCgYKOI1OrvFFVJIrkKVms5TDw/KKrmARJW0C',1,'2025-08-28 05:38:37',NULL,NULL);
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -930,4 +876,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2025-08-21 12:03:44
+-- Dump completed on 2025-09-14 15:11:16
